@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Todo List">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192x192.png">
+</head>
+<body>
+    <div class="app-container">
+        <h1>My Todos</h1>
+        
+        <div class="todo-input">
+            <input type="text" id="new-todo" placeholder="Add a new task...">
+            <button id="add-button">Add</button>
+        </div>
+        
+        <ul id="todo-list">
+            <!-- Todo items will be added here -->
+        </ul>
+        
+        <div class="controls">
+            <button id="clear-completed">Clear Completed</button>
+            <div class="counter">
+                <span id="items-left">0</span> items left
+            </div>
+        </div>
+        
+        <div class="install-banner" id="install-banner">
+            <p>Add this app to your home screen for a better experience!</p>
+            <button id="close-banner">×</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+    <script>
+        // Register service worker for offline capability
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registered', reg))
+                .catch(err => console.log('Service Worker registration failed', err));
+        }
+    </script>
+</body>
+</html>
